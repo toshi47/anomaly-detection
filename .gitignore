@@ -1,6 +1,7 @@
-kafka/.venv
-kafka/.env
-kafka/dataset_sdn.csv
-checkpoint/*
 kafka/checkpoint/*
+kafka/.venv
+checkpoint/*
 files/*
+kafka/dataset_sdn.csv
+kafka/.env
+git
