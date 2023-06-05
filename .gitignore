@@ -1,0 +1,6 @@
+kafka/.venv
+kafka/.env
+kafka/dataset_sdn.csv
+checkpoint/*
+kafka/checkpoint/*
+files/*

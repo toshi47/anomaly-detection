@@ -3,7 +3,7 @@ import json
 import pandas
 
 def get_random_value():
-    df=pandas.read_csv('kafka/dataset_sdn.csv')
+    df=pandas.read_csv('/home/user/Documents/anomaly-detection/kafka/dataset_sdn.csv')
     row=df.sample()
     dict=row.to_dict('records')[0]
     return dict
