@@ -1,19 +1,25 @@
 from kafka import KafkaProducer    
 import json
 import pandas
+from decouple import config
+
+DATA_PATH=config('DATA_PATH')
+NETWORK=config('NETWORK')
+KAFKA_SERVER_PORT=config('KAFKA_SERVER_PORT')
+TOPIC_NAME=config('TOPIC_NAME')
 
 def get_random_value():
-    df=pandas.read_csv('kafka/dataset_sdn.csv')
+    df=pandas.read_csv(DATA_PATH)
     row=df.sample()
     dict=row.to_dict('records')[0]
     return dict
  
 
 if __name__ == "__main__":
-    producer = KafkaProducer(bootstrap_servers=['localhost:9092'],
+    producer = KafkaProducer(bootstrap_servers=[NETWORK+':'+KAFKA_SERVER_PORT],
                                 value_serializer=lambda x:json.dumps(x).encode('utf-8'),
                                 compression_type='gzip')
-    my_topic = 'transaction'
+    my_topic = TOPIC_NAME
     data = get_random_value()
 
     try:
