@@ -2,4 +2,4 @@ kafka/.venv
 kafka/dataset_sdn.csv
 kafka/.env
 kafka/checkpoint
-
+service/models

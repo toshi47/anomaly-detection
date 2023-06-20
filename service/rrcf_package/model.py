@@ -59,21 +59,3 @@ class Model_RRCF():
         print(f'Precision: {precision_score(y_test, predictions)}')
         print(f'Recall: {recall_score(y_test, predictions)}')
         print(f'f1-score: {f1_score(y_test, predictions)}')
-
-
-# just for testing.............
-rrcf = Model_RRCF(1000)
-print('rrcf created')
-# load and prepare data
-df = pd.read_csv('kafka/dataset_sdn.csv')
-df = df.head(10000)
-X = df[['pktcount', 'bytecount']]
-y = df['label']
-X_norm = (X - X.mean()) / X.std()
-X_norm = X_norm.dropna()
-X_train, X_test, y_train, y_test = train_test_split(X_norm, y, test_size=0.2, random_state=42)
-print('rrcf training...')
-# test rrcf
-rrcf.train(X_train, y_train)
-rrcf.test(X_test, X_train.shape[0])
-rrcf.print_metrics(y_test)
