@@ -16,8 +16,13 @@ def predict_request():
     
     print('rrcf training...')
     # test rrcf
-    
-    y_test=DDoS_rrcf.test(X_test, )
+    predictions = rrcf.detection_ddos(X_test)
+    for i in range(len(predictions)):
+        if predictions[i] == 1:
+            print(f"ddos attack")
+        else:
+            print(f"normal traffic")
+    #y_test=DDoS_rrcf.test(X_test, )
     DDoS_rrcf.print_metrics(y_test)
     pass
 
